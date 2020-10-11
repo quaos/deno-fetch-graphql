@@ -1,0 +1,24 @@
+{
+  "name": "deno-fetch-graphql",
+  "version": "0.1.0",
+  "description": "A lightweight client for creating and sending GraphQL requests over Fetch API (without Schema/GQL Types validation)",
+  "author": {
+    "name": "Chakrit W.",
+    "email": "quaos.qrz@gmail.com",
+    "url": "https://github.com/quaos/"
+  },
+  "license": "MIT",
+  "keywords": ["deno","typescript","graphql","client"],
+  "repository": {
+    "github": "https://github.com/quaos/deno-fetch-graphql"
+  },
+  "scripts": {
+    "test": "deno test",
+    "cache": "deno cache src/deps/*.ts"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "private": true
+}
