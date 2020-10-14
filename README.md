@@ -9,7 +9,7 @@ import {
   GraphQLClient,
   GraphQLRequest,
   OperationType,
-} from "https://deno.land/x/fetch-graphql";
+} from "https://deno.land/x/fetch_graphql@1.0.0";
 
 interface HelloInputVars {
   myName: string;
@@ -78,8 +78,10 @@ interface HelloResult {
   andMyNameIs: string;
 }
 
-const errors = gqlResponse.getErrors();
-errors.forEach(console.error);
+if (gqlResponse.hasError()) {
+  gqlResponse.errors.forEach(console.error);
+  gqlResponse.throwFirstError();
+}
 
 const result = gqlResponse.getData<HelloResult>(helloQuery);
 console.log(result);

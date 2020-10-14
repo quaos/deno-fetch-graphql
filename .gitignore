@@ -3,8 +3,12 @@ npm-debug.*
 .vscode/**/*
 !.vscode/settings.json
 
+.env
+**/.env
 *.env
+**/*.env
 *.SECRET
+**/*.SECRET
 
 # macOS
 .DS_Store

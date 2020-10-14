@@ -1,13 +1,14 @@
 import type { Operation } from "./ops.ts";
-import type { GraphQLError } from "./errors.ts";
+import { GraphQLError } from "./errors.ts";
 import { isComplexField } from "./fields.ts";
 
 export class GraphQLResponse {
   data?: any;
-  errors?: GraphQLError[];
+  errors: GraphQLError[];
 
-  constructor(props?: Partial<GraphQLResponse>) {
-    (props) && Object.assign(this, props);
+  constructor({ errors, ...others }: Partial<GraphQLResponse>) {
+    this.errors = (errors) ? errors.map(e => new GraphQLError(e)) : <GraphQLError[]>[];
+    Object.assign(this, others);
   }
 
   getData<TData>(operation: Operation) {
@@ -24,7 +25,13 @@ export class GraphQLResponse {
     return this.data[key] as TData
   }
 
-  getErrors(): GraphQLError[] {
-    return this.errors || []
+  hasError(): boolean {
+    return this.errors.length >= 1
+  }
+
+  throwFirstError(): void {
+    if (this.errors.length >= 1) {
+      throw this.errors[0]
+    }
   }
 }

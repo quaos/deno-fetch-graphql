@@ -41,7 +41,6 @@ export class GraphQLRequest<TVariables> {
         const varDefParts: string[] = op.variableDefs.map(serializeVariableDef)
         headerParts.push(`(${varDefParts.join(", ")})`);
       }
-      headerParts.push(" ");
 
       return `${headerParts.join("")} {\n`
       + `${serializeField(op.field, 1)}\n`
