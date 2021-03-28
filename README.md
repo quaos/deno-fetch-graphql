@@ -9,7 +9,7 @@ import {
   GraphQLClient,
   GraphQLRequest,
   OperationType,
-} from "https://deno.land/x/fetch_graphql@1.0.0";
+} from "https://deno.land/x/fetch_graphql@v1.0.0/mod.ts";
 
 interface HelloInputVars {
   myName: string;
